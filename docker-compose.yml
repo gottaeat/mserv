@@ -9,8 +9,6 @@ services:
       context: .
     hostname: <fqdn>
     container_name: mserv
-    environment:
-      - PUB_IP=<pub_ip>
     networks:
       - mserv
     ports:
