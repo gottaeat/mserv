@@ -1,0 +1,26 @@
+---
+networks:
+  mserv:
+    external: false
+
+services:
+  mserv:
+    build:
+      context: .
+    hostname: <fqdn>
+    container_name: mserv
+    environment:
+      - PUB_IP=<pub_ip>
+    networks:
+      - mserv
+    ports:
+      - 25:25
+      - 465:465
+      - 587:587
+      - 993:993
+    volumes:
+      - ./data/config/dovecot:/dovecot
+      - ./data/config/opendkim:/opendkim
+      - ./data/config/postfix:/postfix
+      - ./data/vmail:/var/vmail
+      - /etc/letsencrypt:/etc/letsencrypt
