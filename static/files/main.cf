@@ -1,0 +1,65 @@
+# define domains
+mydestination = localhost.$mydomain, localhost
+mynetworks =
+
+# bulk
+append_dot_mydomain = no
+biff = no
+compatibility_level = 3.6
+disable_vrfy_command = yes
+relayhost =
+smtpd_banner = $myhostname ESMTP
+smtpd_forbid_bare_newline = normalize
+smtpd_sasl_authenticated_header = yes
+smtputf8_enable = no
+
+# proto
+inet_interfaces = all
+inet_protocols = ipv4
+
+# prevent ip leak
+header_checks = regexp:/etc/postfix/header_checks
+
+# opendkim
+milter_default_action = accept
+milter_protocol = 6
+non_smtpd_milters = inet:localhost:8891
+smtpd_milters = inet:localhost:8891
+
+# acl
+smtpd_helo_restrictions = permit_sasl_authenticated, reject_invalid_helo_hostname, reject_non_fqdn_helo_hostname, reject_unknown_helo_hostname
+smtpd_recipient_restrictions = permit_sasl_authenticated, reject_unauth_destination, reject_unknown_recipient_domain
+smtpd_sender_restrictions = permit_sasl_authenticated, reject_sender_login_mismatch, reject_unknown_reverse_client_hostname, reject_unknown_sender_domain
+
+# ehlo + tls
+smtpd_helo_required = yes
+smtp_tls_CApath = /etc/ssl/certs
+smtp_tls_loglevel = 1
+smtp_tls_mandatory_protocols = >=TLSv1.2
+smtp_tls_protocols = >=TLSv1.2
+smtp_tls_security_level = may
+smtpd_tls_auth_only = yes
+smtpd_tls_loglevel = 1
+smtpd_tls_mandatory_protocols = >=TLSv1.2
+smtpd_tls_protocols = >=TLSv1.2
+smtpd_tls_security_level = may
+
+# dovecot
+smtpd_sender_login_maps = texthash:/postfix/controlled_envelope_senders
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_path = private/auth
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_tls_security_options = noanonymous
+smtpd_sasl_type = dovecot
+virtual_transport = dovecot
+virtual_mailbox_domains = texthash:/postfix/virtual_mailbox_domains
+virtual_mailbox_maps = texthash:/postfix/virtual_mailbox_maps
+virtual_alias_maps = texthash:/postfix/virtual_alias_maps
+virtual_mailbox_base = /var/vmail
+virtual_minimum_uid = 700
+virtual_uid_maps = static:700
+virtual_gid_maps = static:700
+
+# don't look for system aliases
+alias_maps =
+alias_database =
