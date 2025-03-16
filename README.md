@@ -12,9 +12,12 @@ postfix, dovecot and opendkim.
 ## installation
 ```
 # - - pre flight - - #
-# pull repo
-git clone https://github.com/gottaeat/mserv
+# pull the compose file
+mkdir -pv mserv/
 cd mserv/
+
+curl -LO https://raw.githubusercontent.com/gottaeat/mserv/\
+refs/heads/master/docker-compose.yml
 
 # set a domain and define its public v4
 _MYDOMAIN="example.com"
