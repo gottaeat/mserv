@@ -1,6 +1,6 @@
 # mserv
-mserv provides a secure-out-of-the-box, production quality, mail server
-utilizing postfix, dovecot and opendkim.
+mserv provides a secure-out-of-the-box production quality mail server utilizing
+postfix, dovecot and opendkim.
 
 ## features
 1. sasl auth is allowd only on submissions{,s}, and with enforced tls.
