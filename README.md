@@ -20,6 +20,9 @@ cd mserv/
 _MYDOMAIN="example.com"
 _MYPUBIP="1.1.1.1"
 
+# gen a letsencrypt cert, image assumes /etc/letsencrypt/live/${_MYDOMAIN}/*.pem
+# to be present
+
 # create the data volume
 mkdir -pv ./data/{postfix,dovecot/keys,opendkim}
 
