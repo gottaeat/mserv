@@ -1,0 +1,15 @@
+#!/bin/sh
+pinfo(){ echo "INFO: ${@}";}
+pwarn(){ echo "WARN: ${@}";}
+perr(){ echo "ERR : ${@}"; exit 1;}
+
+evalret(){
+    local exitval="${?}"
+
+    if [ "${?}" -eq 0 ]
+        then
+            pinfo "success."
+        else
+            perr "failed, exiting!"
+    fi
+}
