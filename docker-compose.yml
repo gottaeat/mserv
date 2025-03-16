@@ -5,8 +5,7 @@ networks:
 
 services:
   mserv:
-    build:
-      context: .
+    image: ghcr.io/gottaeat/mserv:latest
     hostname: <fqdn>
     container_name: mserv
     networks:
