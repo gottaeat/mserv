@@ -8,6 +8,7 @@ services:
     image: ghcr.io/gottaeat/mserv:latest
     hostname: <fqdn>
     container_name: mserv
+    restart: unless-stopped
     networks:
       - mserv
     ports:
