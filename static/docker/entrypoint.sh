@@ -49,8 +49,8 @@ postconf -e "smtpd_tls_cert_file=/etc/letsencrypt/live/${HOSTNAME}/fullchain.pem
 
 pinfo "templating dovecot local.conf"
 cat << EOF > /etc/dovecot/local.conf
-ssl_cert = </etc/letsencrypt/live/${HOSTNAME}/fullchain.pem
-ssl_key = </etc/letsencrypt/live/${HOSTNAME}/privkey.pem
+ssl_server_cert_file = /etc/letsencrypt/live/${HOSTNAME}/fullchain.pem
+ssl_server_key_file = /etc/letsencrypt/live/${HOSTNAME}/privkey.pem
 postmaster_address = postmaster@${HOSTNAME}
 EOF
 
