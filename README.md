@@ -15,6 +15,14 @@ example.com. 300 IN MX 10 example.com.
 4. user spoofing is mitigated with postfix sender restictions and envelope
    sender mappings.
 
+## versions
+| component         | version              |
+| ----------------- | -------------------- |
+| docker base image | alpine:3.22.1        |
+| postfix           | 3.10.3               |
+| dovecot           | 2.4.1-4 (7d8c0e5759) |
+| opendkim          | v2.11.0              |
+
 ## installation
 ### 1. prerequisites
 #### 1.1. pull repo
