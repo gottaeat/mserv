@@ -1,4 +1,4 @@
-FROM alpine:3.23.0 AS mserv
+FROM alpine:3.23.3 AS mserv
 
 # add virtual mail user and install packages
 RUN \
